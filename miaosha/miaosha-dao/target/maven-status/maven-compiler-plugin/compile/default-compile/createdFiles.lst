@@ -1,0 +1,16 @@
+com\mwz\miaoshadao\dao\StockExample$Criterion.class
+com\mwz\miaoshadao\utils\CacheKey.class
+com\mwz\miaoshadao\dao\User.class
+com\mwz\miaoshadao\MiaoshaDaoApplication.class
+com\mwz\miaoshadao\dao\StockExample$GeneratedCriteria.class
+com\mwz\miaoshadao\dao\StockOrderExample$Criteria.class
+com\mwz\miaoshadao\dao\StockOrderExample.class
+com\mwz\miaoshadao\mapper\UserMapper.class
+com\mwz\miaoshadao\dao\StockExample$Criteria.class
+com\mwz\miaoshadao\dao\Stock.class
+com\mwz\miaoshadao\dao\StockOrderExample$GeneratedCriteria.class
+com\mwz\miaoshadao\mapper\StockMapper.class
+com\mwz\miaoshadao\dao\StockExample.class
+com\mwz\miaoshadao\mapper\StockOrderMapper.class
+com\mwz\miaoshadao\dao\StockOrderExample$Criterion.class
+com\mwz\miaoshadao\dao\StockOrder.class
