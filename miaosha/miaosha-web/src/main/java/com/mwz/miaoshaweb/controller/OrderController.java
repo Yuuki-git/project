@@ -50,7 +50,7 @@ public class OrderController {
      * 3.用户点击下单需携带md5字段等,后台进行验证(防刷接口)
      * 4.令牌桶限流+单用户验证(接口限流)
      * 5.有无库存，若有则使用消息队列RabbitMQ异步下单(防止数据库写表压力大)
-     * 6.删缓存,乐观锁更新库存(防止超卖)
+     * 6.乐观锁更新库存(防止超卖)
      * 7.canal延时双删(数据库和缓存一致性)
      * 7.秒杀成功
      * @param sid
@@ -71,7 +71,7 @@ public class OrderController {
             return "你被限流了,真不幸";
         }
         try {
-            // 检查缓存中该用户是否已经下单过
+            // 检查缓存中该用户是否已经下单过,或者用isbanned验证是否超过规定次数
             Boolean hasOrder=orderService.checkUserOrderInfoInCache(sid,userId);
             if(hasOrder!=null&&hasOrder){
                 LOGGER.info("该用户已经抢购过了");
@@ -92,6 +92,9 @@ public class OrderController {
             jsonObject.put("userId",userId);
             jsonObject.put("verifyHash",verifyHash);
             sendToOrderQueue(jsonObject.toJSONString());
+            // 删除库存缓存
+            // 延长指定时间再次删除缓存,假设失败
+            // cachedThreadPool.execute(new delCacheByThread(sid));
             return "秒杀请求提交成功";
         }catch (Exception e){
             LOGGER.error("下单接口:异步处理订单异常:",e);

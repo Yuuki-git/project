@@ -21,5 +21,6 @@ public interface StockMapper {
 
     int updateByPrimaryKey(Stock record);
 
+    // 版本号 or 状态
     int updateByOptimistic(Stock record);
 }

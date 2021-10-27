@@ -104,6 +104,6 @@
       sale = sale + 1,
     </set>
     WHERE id = #{id,jdbcType=INTEGER}
-    AND sale = #{sale,jdbcType=INTEGER}
+    AND sale <= #{count,jdbcType=INTEGER}
   </update>
 </mapper>
