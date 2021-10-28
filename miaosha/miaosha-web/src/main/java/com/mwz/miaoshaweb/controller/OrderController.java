@@ -77,6 +77,12 @@ public class OrderController {
                 LOGGER.info("该用户已经抢购过了");
                 return "你已经去抢购过了,不要太贪心..";
             }
+            // int count =userService.addUserCount(userId);
+            // LOGGER.info("用户截至该次的访问次数为:[{}]",count);
+            // boolean isBanned=userService.getUserIsBanned(userId);
+            // if(isBanned){
+            //     return "购买失败,超过频率限制";
+            // }
             // 没有下单,检查缓存中商品是否还有库存
             LOGGER.info("没有抢购过,检查缓存中商品是否还有库存");
             Integer count=stockService.getStockCount(sid);
@@ -100,7 +106,6 @@ public class OrderController {
             LOGGER.error("下单接口:异步处理订单异常:",e);
             return "秒杀请求失败,服务器正忙...";
         }
-
 
     }
 

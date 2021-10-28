@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String getVerifyHash(Integer sid, Integer userId) throws Exception {
-        LOGGER.info("请自行验证是否在抢购时间内");
+        LOGGER.info("在时间内");
 
         // 检查用户合法性
         User user=userMapper.selectByPrimaryKey(userId.longValue());
