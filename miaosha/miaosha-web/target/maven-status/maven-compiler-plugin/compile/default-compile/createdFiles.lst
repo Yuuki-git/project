@@ -1,0 +1,7 @@
+com\mwz\miaoshaweb\controller\OrderController$delCacheByThread.class
+com\mwz\miaoshaweb\config\RabbitMqConfig.class
+com\mwz\miaoshaweb\controller\OrderController.class
+com\mwz\miaoshaweb\receiver\OrderMqReceiver.class
+com\mwz\miaoshaweb\controller\StockController.class
+com\mwz\miaoshaweb\MiaoshaWebApplication.class
+com\mwz\miaoshaweb\receiver\DelCacheReceiver.class

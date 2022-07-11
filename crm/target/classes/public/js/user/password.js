@@ -1,0 +1,32 @@
+layui.use(['form','jquery'], function () {
+    var form = layui.form,
+        layer = layui.layer,
+        $ = layui.jquery;
+
+    form.on('submit(saveBtn)', function(data) {
+        console.log(data);
+        $.post(
+            "user/updateUserPwd",
+            {
+                userPwd: data.field.oldPWD,
+                newPwd: data.field.newPWD,
+                repeatPwd: data.field.checkPWD
+            },
+            function (data) {
+                // 成功
+                if (data.code == 200) {
+                    // 清空cookie，并返回到登录页面
+                    layer.msg("用户密码修改成功,请重新登录! ",function (){
+                        $.removeCookie("userIdStr",{domain:serverName,path:crm});
+                        $.removeCookie("userName",{domain:serverName,path:crm});
+                        $.removeCookie("trueName",{domain:serverName,path:crm});
+                        window.parent.location.href = "index";
+                    });
+                } else {    // 失败
+                    layer.msg(data.msg,{icon: 5});
+                }
+            }
+        );
+    });
+
+});
